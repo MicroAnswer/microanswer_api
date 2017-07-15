@@ -9,31 +9,50 @@ import com.jfinal.plugin.activerecord.IBean;
 @SuppressWarnings({"serial", "unchecked"})
 public abstract class BasePhonemp3app<M extends BasePhonemp3app<M>> extends Model<M> implements IBean {
 
-	public M setId(java.lang.Object id) {
-		set("id", id);
-		return (M)this;
-	}
+    public M setId(java.lang.Object id) {
+        set("id", id);
+        return (M) this;
+    }
 
-	public java.lang.Object getId() {
-		return get("id");
-	}
+    public java.lang.Object getId() {
+        return get("id");
+    }
 
-	public M setVersion(java.lang.Object version) {
-		set("version", version);
-		return (M)this;
-	}
+    public M setVersion(java.lang.Object version) {
+        set("version", version);
+        return (M) this;
+    }
 
-	public java.lang.Object getVersion() {
-		return get("version");
-	}
+    public java.lang.Object getVersion() {
+        return get("version");
+    }
 
-	public M setLink(java.lang.Object link) {
-		set("link", link);
-		return (M)this;
-	}
+    public M setLink(java.lang.Object link) {
+        set("link", link);
+        return (M) this;
+    }
 
-	public java.lang.Object getLink() {
-		return get("link");
-	}
+    public java.lang.Object getLink() {
+        return get("link");
+    }
+
+    public M setName(java.lang.Object name) {
+        set("name", name);
+        return (M) this;
+    }
+
+    public java.lang.Object getName() {
+        return get("name");
+    }
+
+    public M setNewfunction(java.lang.Object newfunction) {
+        set("newfunction", newfunction);
+        return (M) this;
+    }
+
+    public java.lang.Object getNewfunction() {
+        return get("newfunction");
+    }
+
 
 }
