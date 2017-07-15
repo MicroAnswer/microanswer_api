@@ -23,7 +23,7 @@ public class BaseControler extends Controller {
     public static final int FAIL = 500;
 
     /**
-     * 子类的方法中使用该方法返回数据到客户端,方便快捷
+     * 子类的方法中使用该方法返回数据到客户端,方便快捷2
      */
     public void answer(final int code, final String msg, final Object data, Object... detalMsg) {
         if (code != 200 && code != 500) {
