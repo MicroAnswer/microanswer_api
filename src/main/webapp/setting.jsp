@@ -18,6 +18,8 @@
     <input id="imginput" type="file" accept="image/jpeg,image/png" name="file">
     <input type="submit" value="上传"/>
 </form>
+
+
 <h2>新版APP上传</h2>
 <form action="./phonemp3/uploadNewApp" method="post" enctype="multipart/form-data">
 

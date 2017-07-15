@@ -128,6 +128,13 @@ public class PhoneMp3Controler extends BaseControler {
 
         // 解析文件名获取版本(phonemp3-1.0.0-release.apk)
         String[] _split = fileName.split("-");
+
+        if (_split.length != 3) {
+            answer(FAIL, "文件不合法", null);
+            uploadfile.delete();
+            return;
+        }
+
         String version = _split[1];
 
 
