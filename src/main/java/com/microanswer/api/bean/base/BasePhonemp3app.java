@@ -45,6 +45,36 @@ public abstract class BasePhonemp3app<M extends BasePhonemp3app<M>> extends Mode
         return get("name");
     }
 
+    public M setSize(java.lang.Object size) {
+        set("size", size);
+        return (M) this;
+    }
+
+    public java.lang.Object getSize() {
+        return get("size");
+    }
+
+
+    public M setCreatedat(java.lang.Object createdat) {
+        set("createdat", createdat);
+        return (M) this;
+    }
+
+    public java.lang.Object getCreatedat() {
+        return get("createdat");
+    }
+
+
+    public M setUpdateat(java.lang.Object updateat) {
+        set("updateat", updateat);
+        return (M) this;
+    }
+
+    public java.lang.Object getUpdateat() {
+        return get("updateat");
+    }
+
+
     public M setNewfunction(java.lang.Object newfunction) {
         set("newfunction", newfunction);
         return (M) this;

@@ -22,7 +22,7 @@ public class PhoneMp3Controler extends BaseControler {
 
     // 下载apk
     public void downloadApk() {
-        checkedAndCreateTable("phonemp3app", "(id INTEGER PRIMARY KEY AUTOINCREMENT, name CHAR, version CHAR, link CHAR, newfunction CHAR, createdat CHAR, updateat CHAR)");
+        checkedAndCreateTable("phonemp3app", "(id INTEGER PRIMARY KEY AUTOINCREMENT, name CHAR, version CHAR, link CHAR, newfunction CHAR,size CHAR, createdat CHAR, updateat CHAR)");
         String id = getPara("id");
         if (StringUtils.isEmpty(id)) {
             id = "-1";
@@ -38,7 +38,7 @@ public class PhoneMp3Controler extends BaseControler {
 
     // 获取最新版app信息
     public void getNewApp() {
-        checkedAndCreateTable("phonemp3app", "(id INTEGER PRIMARY KEY AUTOINCREMENT, name CHAR, version CHAR, link CHAR, newfunction CHAR, createdat CHAR, updateat CHAR)");
+        checkedAndCreateTable("phonemp3app", "(id INTEGER PRIMARY KEY AUTOINCREMENT, name CHAR, version CHAR, link CHAR, newfunction CHAR,size CHAR, createdat CHAR, updateat CHAR)");
 
         // 查询一条数据,按id排序,则找到了最新的一条数据
         Phonemp3app first = Phonemp3app.dao.findFirst("select * from phonemp3app order by id desc limit 0,1");
@@ -106,7 +106,7 @@ public class PhoneMp3Controler extends BaseControler {
 
     // 上传新版app
     public void uploadNewApp() {
-        checkedAndCreateTable("phonemp3app", "(id INTEGER PRIMARY KEY AUTOINCREMENT, name CHAR, version CHAR, link CHAR, newfunction CHAR, createdat CHAR, updateat CHAR)");
+        checkedAndCreateTable("phonemp3app", "(id INTEGER PRIMARY KEY AUTOINCREMENT, name CHAR, version CHAR, link CHAR, newfunction CHAR,size CHAR, createdat CHAR, updateat CHAR)");
 
         // jfinal 上传的临时文件
         File uploadfile = getFile().getFile();
@@ -136,6 +136,8 @@ public class PhoneMp3Controler extends BaseControler {
         }
 
         String version = _split[1];
+
+        String size = String.valueOf(uploadfile.length());
 
 
         // upload目录
@@ -168,10 +170,11 @@ public class PhoneMp3Controler extends BaseControler {
             } catch (Exception e) {
                 LogKit.error(e.getMessage());
             }
-            Db.update("insert into phonemp3app (name,version,newfunction,link) " +
+            String t = String.valueOf(System.currentTimeMillis());
+            Db.update("insert into phonemp3app (name,version,newfunction,link,size,createdat,updateat) " +
                     "values ('" + name +
                     "','" + version +
-                    "','" + newfunction + "','" + link + "')");
+                    "','" + newfunction + "','" + link + "','" + size + "','" + t + "','" + t + "')");
             answer(SUCCESS, "上传成功", null);
         } else {
             // 移动失败
