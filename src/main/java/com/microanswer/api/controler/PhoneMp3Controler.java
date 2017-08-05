@@ -183,4 +183,29 @@ public class PhoneMp3Controler extends BaseControler {
 
 
     }
+
+    // 提交反馈建议
+    public void submitFeedBack() {
+        checkedAndCreateTable("feedback", "(id INTEGER PRIMARY KEY AUTOINCREMENT, content CHAR, contact CHAR, version CHAR, createdat CHAR, updateat CHAR)");
+        String content = getPara("content");
+        if (StringUtils.isEmpty(content)) {
+            answer(FAIL, "提交失败", null, "没有内容");
+            return;
+        }
+        String version = getPara("version");
+        if (StringUtils.isEmpty(version)) {
+            answer(FAIL, "提交失败", null, "没有版本号");
+            return;
+        }
+        String contact = getPara("contact");
+        if (StringUtils.isEmpty(contact)) {
+            contact = "-";
+        }
+        String t = String.valueOf(System.currentTimeMillis());
+        Db.update("insert into feedback (content,contact,version,createdat,updateat) " +
+                "values ('" + content +
+                "','" + contact +
+                "','" + version + "','" + t + "','" + t + "')");
+        answer(SUCCESS, "提交成功", null);
+    }
 }
